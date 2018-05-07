@@ -13,7 +13,7 @@ namespace VoiceCommand
 
 		public CommandListener()
 		{
-			recognizer = new SpeechRecognitionEngine(new CultureInfo("de-DE"));
+            recognizer = new SpeechRecognitionEngine(CultureInfo.InstalledUICulture);
 			recognizer.SetInputToDefaultAudioDevice();
         }
 

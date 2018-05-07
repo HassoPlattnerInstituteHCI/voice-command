@@ -29,3 +29,11 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+
+*.lock
+
+*.ide
+
+*.ide-shm
+
+*.ide-wal
