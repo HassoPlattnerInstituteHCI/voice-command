@@ -12,7 +12,7 @@ if(platform === 'darwin') {
 }
 else if (platform == "win32") {
     var msbuild = 'C:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe';
-    var child = spawn(msbuild, ['/p:Configuration=Release', 'voice-command.csproj'], {
+    var child = spawn(msbuild, ['/p:Configuration=Release', 'voice-command.csproj', '/p:Platform=AnyCPU'], {
     cwd: './voice-command/src/win/voice-command/'
     });
     child.stdout.on('data', function (data) { console.log('' + data); });
