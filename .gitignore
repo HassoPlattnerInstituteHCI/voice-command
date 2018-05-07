@@ -3,6 +3,7 @@ src/osx/voice-command/build
 
 
 # User-specific files
+*.DS_Store
 *.suo
 *.sln.ide/
 *.user
