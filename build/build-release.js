@@ -1,14 +1,3 @@
-(function() {
-    var childProcess = require("child_process");
-    var oldSpawn = childProcess.spawn;
-    function mySpawn() {
-        console.log('spawn called');
-        console.log(arguments);
-        var result = oldSpawn.apply(this, arguments);
-        return result;
-    }
-    childProcess.spawn = mySpawn;
-})();
 var os = require('os'),
     fs = require('fs'),
     spawn = require('child_process').spawn;
@@ -18,14 +7,13 @@ var platform = os.platform();
 console.log(platform);
 if(platform === 'darwin') {
     var child = spawn('xcodebuild', {
-    cwd: './../src/osx/voice-command/'
+    cwd: './voice-command/src/osx/voice-command/'
     });
-    console.log('stuff');
 }
 else if (platform == "win32") {
     var msbuild = 'C:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe';
     var child = spawn(msbuild, ['/p:Configuration=Release', 'voice-command.csproj'], {
-    cwd: './../src/win/voice-command/'
+    cwd: './voice-command/src/win/voice-command/'
     });
     child.stdout.on('data', function (data) { console.log('' + data); });
     child.stderr.on('data', function (data) { console.log('' + data); });
@@ -33,7 +21,6 @@ else if (platform == "win32") {
 else {
     throw('Platform ' + platform + ' is not supported yet.');
 }
-console.log('more stuff');
 child.on('close', function(code) {
   if (code !== 0) {
     console.log('Build process exited with code ' + code);
