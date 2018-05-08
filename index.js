@@ -25,7 +25,7 @@ VoiceCommand.prototype.startListening = function() {
 	process.stdout.setEncoding('UTF-8');
 	
 	process.stdout.on('data', function(data) {
-		var cmd = data.substring(0, data.length - 1);
+		var cmd = data.trim();
 	    that.emit('command', cmd);
 	});
 
